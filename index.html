@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AgroFeira Paragominas — Ecossistema Digital de Apoio à Agricultura Familiar e Gestão de Mercados Locais.">
+<title>AgroFeira Paragominas | Plataforma de Inteligência Comercial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1b5e20;
+  --primary-light: #2e7d32;
+  --accent: #fbc02d;
+  --accent-hover: #f9a825;
+  --bg-main: #f4f7f2;
+  --surface: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --radius: 14px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --bg-main: #0f172a;
+  --surface: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-main); color: var(--text-main); line-height: 1.6; transition: var(--transition); }
+
+a { text-decoration: none; color: inherit; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; border: 0; background: none; }
+
+.container { width: min(1220px, 92%); margin: auto; }
+
+/* Header Profissional */
+header { position: sticky; top: 0; z-index: 1000; background: var(--surface); border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); background-opacity: 0.95; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.5rem; color: var(--primary); }
+.logo span { color: var(--accent); background: var(--primary); padding: 2px 8px; border-radius: 8px; }
+
+nav { display: flex; align-items: center; gap: 24px; }
+nav a { font-weight: 600; font-size: 0.95krem; color: var(--text-muted); transition: var(--transition); }
+nav a:hover, nav a.active { color: var(--primary); }
+
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: var(--radius); font-weight: 700; transition: var(--transition); font-size: 0.95rem; }
+.btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(27, 94, 32, 0.2); }
+.btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+.btn-accent { background: var(--accent); color: #1e293b; }
+.btn-accent:hover { background: var(--accent-hover); transform: translateY(-2px); }
+.btn-outline { border: 1px solid var(--border); color: var(--text-main); background: var(--surface); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+/* Hero Section com Padrão de Engenharia de Dados */
+.hero { padding: 90px 0 60px; background: linear-gradient(135deg, rgba(27,94,32,0.95), rgba(46,125,50,0.85)), url('https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=2000&q=85') center/cover; color: #fff; border-radius: 0 0 32px 32px; margin-bottom: 40px; box-shadow: var(--shadow-md); }
+.hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+.hero badge { display: inline-flex; background: rgba(255,255,255,0.15); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 6px 14px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
+.hero h1 { font-size: clamp(2.5rem, 4vw, 3.8rem); line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
+.hero h1 span { color: var(--accent); }
+.hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; max-width: 600px; }
+
+/* Dashboard Cards de Métricas em Tempo Real */
+.metrics-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--radius); padding: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.metric-item b { display: block; font-size: 1.8rem; color: var(--accent); }
+.metric-item span { font-size: 0.85rem; opacity: 0.8; }
+
+/* Seções e Ferramentas de Busca Avançada */
+section { padding: 50px 0; }
+.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 35px; flex-wrap: wrap; gap: 20px; }
+.section-header h2 { font-size: 2rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
+.section-header p { color: var(--text-muted); font-size: 1rem; }
+
+.toolbar { background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow-sm); display: flex; gap: 15px; align-items: center; flex-wrap: wrap; margin-bottom: 30px; }
+.search-box { flex: 1; min-width: 280px; position: relative; }
+.search-box input { width: 100%; padding: 12px 16px 12px 44px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-main); color: var(--text-main); outline: none; transition: var(--transition); }
+.search-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(27,94,32,0.1); }
+.search-box span { position: absolute; left: 16px; top: 13px; color: var(--text-muted); }
+
+.filter-chips { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
+.chip { padding: 10px 18px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: var(--transition); white-space: nowrap; }
+.chip.active, .chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* Grid de Produtos Dinâmicos */
+.grid-products { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column; }
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+.card-img-wrapper { height: 200px; position: relative; overflow: hidden; background: #e2e8f0; }
+.card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+.card:hover .card-img-wrapper img { transform: scale(1.05); }
+.card-badge { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
+
+.card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+.card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
+.card-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.card-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-footer { display: flex; align-items: center; justify-content:between; border-top: 1px solid var(--border); padding-top: 14px; margin-top: auto; }
+.price { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+.price small { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+
+/* Painel Administrativo / Painel do Produtor (Recurso Avançado) */
+.admin-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow-md); margin-top: 40px; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-main); color: var(--text-main); outline: none; transition: var(--transition); }
+.form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(27,94,32,0.1); }
+
+/* Carrinho Flutuante e Modais Estilizados */
+.cart-float { position: fixed; right: 30px; bottom: 30px; background: var(--primary); color: #fff; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items:center; font-size: 1.5rem; box-shadow: 0 10px 25px rgba(27,94,32,0.4); z-index: 999; transition: var(--transition); }
+.cart-float:hover { transform: scale(1.1); background: var(--primary-light); }
+.cart-counter { position: absolute; top: -4px; right: -4px; background: var(--accent); color: #1e293b; width: 24px; height: 24px; border-radius: 50%; font-size: 0.75rem; font-weight: 800; display: grid; place-items: center; border: 2px solid var(--surface); }
+
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.modal-backdrop.show { display: flex; }
+.modal-content { background: var(--surface); border-radius: var(--radius); width: min(540px, 100%); padding: 30px; box-shadow: var(--shadow-md); max-height: 90vh; overflow-y: auto; position: relative; }
+.modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.2rem; background: var(--bg-main); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: var(--text-main); }
+
+footer { background: #0f172a; color: #94a3b8; padding: 60px 0 30px; margin-top: 80px; border-top: 1px solid var(--border); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-grid h4 { color: #fff; margin-bottom: 16px; font-size: 1.1rem; }
+.footer-grid ul { list-style: none; display: grid; gap: 10px; }
+.footer-grid a:hover { color: var(--accent); }
+
+@media(max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  nav { display: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">🌿 Agro<span>Feira</span></a>
+    <nav>
+      <a href="#catalogo" class="active">Catálogo Inteligente</a>
+      <a href="#produtores">Produtores Locais</a>
+      <a href="#painel">Painel do Agricultor</a>
+      <a href="#sobre">Ecossistema</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-outline" onclick="toggleTheme()" title="Alternar Modo Visual">🌓 Tema</button>
+      <a href="#painel" class="btn btn-primary">Cadastrar Produto</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section Avançada -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">🚀 Edição Digital Avançada • Paragominas/PA</span>
+        <h1>Conectando o Campo <span>Direto à sua Mesa</span> com Eficiência.</h1>
+        <p>Plataforma descentralizada de negociação agrícola direta, garantindo rastreabilidade, apoio à agricultura familiar e fomento econômico regional sustentável.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#catalogo" class="btn btn-accent">🛒 Explorar Catálogo</a>
+          <a href="#painel" class="btn btn-outline" style="color: #fff; border-color: rgba(255,255,255,0.4);">➕ Anunciar Safra</a>
+        </div>
+      </div>
+      <div>
+        <div class="metrics-card">
+          <div class="metric-item"><b id="stat-producers">54</b><span>Produtores Ativos</span></div>
+          <div class="metric-item"><b id="stat-products">18+</b><span>Itens Cadastrados</span></div>
+          <div class="metric-item"><b>100%</b><span>Comércio Justo</span></div>
+          <div class="metric-item"><b>Zero</b><span>Taxa de Intermediação</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Catálogo e Busca Dinâmica -->
+  <section id="catalogo" class="container">
+    <div class="section-header">
+      <div>
+        <h2>Catálogo de Produtos Frescos</h2>
+        <p>Filtre por categoria ou pesquise diretamente pelo item desejado.</p>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" id="searchInput" placeholder="Pesquisar por hortaliça, fruta, mel, produtor..." oninput="filterProducts()">
+      </div>
+      <div class="filter-chips" id="categoryChips">
+        <button class="chip active" onclick="setCategory('Todos', this)">Todos</button>
+        <button class="chip" onclick="setCategory('Hortaliças', this)">🥬 Hortaliças</button>
+        <button class="chip" onclick="setCategory('Frutas', this)">🍌 Frutas</button>
+        <button class="chip" onclick="setCategory('Raízes', this)">🥔 Raízes</button>
+        <button class="chip" onclick="setCategory('Mel & Derivados', this)">🍯 Mel & Derivados</button>
+        <button class="chip" onclick="setCategory('Laticínios', this)">🧀 Laticínios</button>
+        <button class="chip" onclick="setCategory('Artesanato', this)">🧺 Artesanato</button>
+      </div>
+    </div>
+
+    <div id="productGrid" class="grid-products">
+      <!-- Inserido dinamicamente via Script -->
+    </div>
+  </section>
+
+  <!-- Painel Interativo de Gestão / Cadastro de Produto para o Produtor (Simulando o requisito avançado) -->
+  <section id="painel" class="container">
+    <div class="admin-panel">
+      <div class="section-header" style="margin-bottom: 20px;">
+        <div>
+          <h2>🌾 Painel de Cadastro e Gestão de Safra</h2>
+          <p>Adicione novos produtos diretamente ao catálogo interativo da AgroFeira.</p>
+        </div>
+      </div>
+      <form id="productForm" onsubmit="handleProductSubmit(event)">
+        <div class="form-grid">
+          <input type="text" id="prodName" class="form-control" placeholder="Nome do Produto (Ex: Macaxeira Fresca)" required>
+          <select id="prodCat" class="form-control" required>
+            <option value="" disabled selected>Selecione a Categoria</option>
+            <option value="Hortaliças">Hortaliças</option>
+            <option value="Frutas">Frutas</option>
+            <option value="Raízes">Raízes</option>
+            <option value="Mel & Derivados">Mel & Derivados</option>
+            <option value="Laticínios">Laticínios</option>
+            <option value="Artesanato">Artesanato</option>
+          </select>
+          <input type="text" id="prodFarmer" class="form-control" placeholder="Nome do Produtor / Sítio" required>
+          <input type="text" id="prodPlace" class="form-control" placeholder="Localização / Barraca (Ex: Barraca 14)" required>
+          <input type="number" step="0.01" id="prodPrice" class="form-control" placeholder="Preço em R$ (Ex: 6.50)" required>
+          <input type="text" id="prodUnit" class="form-control" placeholder="Unidade (Ex: kg, maço, unidade)" required>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <input type="url" id="prodImg" class="form-control" placeholder="URL de Imagem Ilustrativa (Opcional - deixe vazio para imagem padrão)">
+        </div>
+        <textarea id="prodDesc" class="form-control" placeholder="Breve descrição da safra ou qualidade do produto..." style="margin-bottom: 16px; min-height: 80px;" required></textarea>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Publicar Produto no Catálogo Online</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <h3 style="color:#fff; margin-bottom:12px;">🌿 AgroFeira Paragominas</h3>
+      <p>Desenvolvido para aproximar a produção familiar dos centros urbanos com tecnologias web avançadas e arquitetura orientada a dados.</p>
+    </div>
+    <div>
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#catalogo">Catálogo de Produtos</a></li>
+        <li><a href="#painel">Painel do Produtor</a></li>
+        <li><a href="#inicio">Início da Página</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Suporte & Parceria</h4>
+      <ul>
+        <li><a href="https://wa.me/5591980622997" target="_blank">Contato via WhatsApp</a></li>
+        <li><a href="#">Termos e Privacidade</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.85rem;">
+    © 2026 AgroFeira Paragominas • Todos os direitos reservados.
+  </div>
+</footer>
+
+<!-- Botão Flutuante do Carrinho / Lista -->
+<button class="cart-float" onclick="openCartModal()" aria-label="Abrir Lista de Interesses">
+  🛒
+  <span id="cartCount" class="cart-counter">0</span>
+</button>
+
+<!-- Modal Dinâmico -->
+<div id="appModal" class="modal-backdrop" onclick="if(event.target === this) closeModal()">
+  <div class="modal-content">
+    <div class="modal-close" onclick="closeModal()">✕</div>
+    <h2 id="modalTitle" style="margin-bottom: 15px; font-size: 1.4rem;">Sua Lista de Pedidos</h2>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// Estado Global Reativo da Aplicação (Simulando arquitetura avançada)
+let state = {
+  theme: 'light',
+  currentCategory: 'Todos',
+  searchQuery: '',
+  cart: [],
+  products: [
+    {id: 1, name: "Mandioca Amarela Premium", cat: "Raízes", farmer: "João da Silva", place: "Barraca 12", price: 5.00, unit: "kg", img: "https://images.unsplash.com/photo-1596485804153-6258622c7a72?auto=format&fit=crop&w=700&q=85", desc: "Macia e fresca, colhida no amanhecer."},
+    {id: 2, name: "Mel Silvestre do Uraim", cat: "Mel & Derivados", farmer: "Apiário do Sol", place: "Barraca 05", price: 25.00, unit: "unidade", img: "https://images.unsplash.com/photo-1587049352847-81a56d773c1c?auto=format&fit=crop&w=700&q=85", desc: "Mel puro, 100% natural sem aditivos."},
+    {id: 3, name: "Alface Crespa Hidropônica", cat: "Hortaliças", farmer: "Horta Jaderlândia", place: "Barraca 10", price: 3.50, unit: "maço", img: "https://images.unsplash.com/photo-1622205313162-be1d5712a43d?auto=format&fit=crop&w=700&q=85", desc: "Folhas crocantes cultivadas localmente."},
+    {id: 4, name: "Banana Prata Selecionada", cat: "Frutas", farmer: "Sítio Boa Esperança", place: "Barraca 08", price: 6.00, unit: "kg", img: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=700&q=85", desc: "Frutas no ponto ideal de maturação."},
+    {id: 5, name: "Queijo Colonial Artesanal", cat: "Laticínios", farmer: "Sabor da Roça", place: "Barraca 16", price: 32.00, unit: "peça", img: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=700&q=85", desc: "Produção familiar artesanal de alta qualidade."},
+    {id: 6, name: "Polpa Congelada de Cupuaçu", cat: "Frutas", farmer: "Sabores do Pará", place: "Barraca 18", price: 12.00, unit: "500g", img: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=700&q=85", desc: "Polpa pura de cupuaçu regional."}
+  ]
+};
+
+function renderApp() {
+  renderProducts();
+  document.getElementById('stat-products').textContent = state.products.length + '+';
+  document.getElementById('cartCount').textContent = state.cart.length;
+}
+
+function renderProducts() {
+  const grid = document.getElementById('productGrid');
+  const query = state.searchQuery.toLowerCase();
+  
+  const filtered = state.products.filter(p => {
+    const matchesCategory = state.currentCategory === 'Todos' || p.cat === state.currentCategory;
+    const matchesSearch = `${p.name} ${p.farmer} ${p.cat}`.toLowerCase().includes(query);
+    return matchesCategory && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 40px; background:var(--surface); border-radius:var(--radius); border: 1px dashed var(--border);"><h3>Nenhum produto encontrado</h3><p style="color:var(--text-muted)">Tente ajustar sua busca ou categoria.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p => `
+    <article class="card">
+      <div class="card-img-wrapper">
+        <span class="card-badge">${p.cat}</span>
+        <img src="${p.img || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=700&q=85'}" alt="${p.name}">
+      </div>
+      <div class="card-body">
+        <div>
+          <h3 class="card-title">${p.name}</h3>
+          <div class="card-meta"><span>👨‍🌾 ${p.farmer}</span> • <span>📍 ${p.place}</span></div>
+          <p class="card-desc">${p.desc}</p>
+        </div>
+        <div class="card-footer">
+          <div class="price">R$ ${p.price.toFixed(2).replace('.', ',')} <small>/ ${p.unit}</small></div>
+          <button class="btn btn-primary" onclick="addToCart(${p.id})" style="padding: 8px 14px; font-size: 0.85rem;">➕ Adicionar</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+function setCategory(cat, element) {
+  state.currentCategory = cat;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  element.classList.add('active');
+  renderProducts();
+}
+
+function filterProducts() {
+  state.searchQuery = document.getElementById('searchInput').value;
+  renderProducts();
+}
+
+function addToCart(id) {
+  const product = state.products.find(p => p.id === id);
+  if (product) {
+    state.cart.push(product);
+    renderApp();
+    // Feedback visual rápido
+    alert(`"${product.name}" adicionado à sua lista de pedidos!`);
+  }
+}
+
+function openCartModal() {
+  const modal = document.getElementById('appModal');
+  const title = document.getElementById('modalTitle');
+  const body = document.getElementById('modalBody');
+
+  title.textContent = "🛒 Lista de Pedidos Consolidados";
+  
+  if (state.cart.length === 0) {
+    body.innerHTML = `<p style="text-align:center; padding: 20px; color:var(--text-muted)">Sua lista está vazia no momento.</p>`;
+  } else {
+    let total = state.cart.reduce((sum, item) => sum + item.price, 0);
+    body.innerHTML = `
+      <div style="display:grid; gap: 12px; margin-bottom: 20px; max-height: 250px; overflow-y:auto;">
+        ${state.cart.map((item, idx) => `
+          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-main); padding: 10px 14px; border-radius: 8px;">
+            <div>
+              <strong>${item.name}</strong><br>
+              <small style="color:var(--text-muted)">${item.farmer} • R$ ${item.price.toFixed(2).replace('.', ',')}</small>
+            </div>
+            <button onclick="removeFromCart(${idx})" style="color:#ef4444; font-weight:bold;">Remover</button>
+          </div>
+        `).join('')}
+      </div>
+      <div style="font-size: 1.2rem; font-weight: 800; text-align: right; margin-bottom: 20px;">
+        Total Estimado: R$ ${total.toFixed(2).replace('.', ',')}
+      </div>
+      <button class="btn btn-primary" style="width:100%; background:#25d366;" onclick="sendWhatsAppOrder()">📲 Enviar Pedido via WhatsApp</button>
+    `;
+  }
+  modal.classList.add('show');
+}
+
+function removeFromCart(index) {
+  state.cart.splice(index, 1);
+  renderApp();
+  openCartModal();
+}
+
+function sendWhatsAppOrder() {
+  const listText = state.cart.map(i => `- ${i.name} (${i.farmer}) - R$ ${i.price.toFixed(2)}`).join('%0A');
+  const url = `https://wa.me/5591980622997?text=${encodeURIComponent("Olá! Gostaria de encomendar os seguintes produtos da AgroFeira:%0A" + listText)}`;
+  window.open(url, '_blank');
+}
+
+function handleProductSubmit(e) {
+  e.preventDefault();
+  const newProduct = {
+    id: Date.now(),
+    name: document.getElementById('prodName').value,
+    cat: document.getElementById('prodCat').value,
+    farmer: document.getElementById('prodFarmer').value,
+    place: document.getElementById('prodPlace').value,
+    price: parseFloat(document.getElementById('prodPrice').value),
+    unit: document.getElementById('prodUnit').value,
+    img: document.getElementById('prodImg').value,
+    desc: document.getElementById('prodDesc').value
+  };
+
+  state.products.unshift(newProduct);
+  renderApp();
+  document.getElementById('productForm').reset();
+  alert('Produto cadastrado com sucesso e já exibido no catálogo online!');
+  window.location.hash = '#catalogo';
+}
+
+function toggleTheme() {
+  if (state.theme === 'light') {
+    state.theme = 'dark';
+    document.body.setAttribute('data-theme', 'dark');
+  } else {
+    state.theme = 'light';
+    document.body.removeAttribute('data-theme');
+  }
+}
+
+function closeModal() {
+  document.getElementById('appModal').classList.remove('show');
+}
+
+// Inicialização da aplicação
+renderApp();
+</script>
+</body>
+</html>
