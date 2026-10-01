@@ -3,139 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AgroFeira Paragominas — Ecossistema Digital de Apoio à Agricultura Familiar e Gestão de Mercados Locais.">
-<title>AgroFeira Paragominas | Plataforma de Inteligência Comercial</title>
+<meta name="description" content="AgroFeira Paragominas — produtos da agricultura familiar, produtores locais, feira, encomendas e informações.">
+<title>AgroFeira Paragominas | Agricultura Familiar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --primary: #1b5e20;
-  --primary-light: #2e7d32;
-  --accent: #fbc02d;
-  --accent-hover: #f9a825;
-  --bg-main: #f4f7f2;
-  --surface: #ffffff;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-  --radius: 14px;
-  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+:root{
+  --verde:#2e7d32;--verde2:#4caf50;--verde3:#e8f5e9;--amarelo:#fbc02d;
+  --terra:#795548;--terra2:#4e342e;--fundo:#f7faf5;--branco:#fff;
+  --texto:#263238;--cinza:#607d8b;--borda:#e0e6e0;--perigo:#c62828;
 }
-
-[data-theme="dark"] {
-  --bg-main: #0f172a;
-  --surface: #1e293b;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --border: #334155;
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:var(--fundo);color:var(--texto);line-height:1.6}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+button{cursor:pointer;border:0}
+.container{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:1000;background:rgba(46,125,50,.97);color:#fff;box-shadow:0 3px 15px #0002}
+.header-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.35rem;color:var(--amarelo)}
+.logo span{color:#fff}
+nav{display:flex;align-items:center;gap:18px}
+nav a{font-weight:600;font-size:.93rem}
+nav a:hover{color:var(--amarelo)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 17px;border-radius:10px;font-weight:700;transition:.2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--amarelo);color:var(--terra2)}
+.btn-light{background:#fff;color:var(--verde)}
+.btn-outline{border:1px solid #ffffff77;color:#fff}
+.menu{display:none;background:none;color:#fff;font-size:1.7rem}
+.hero{background:linear-gradient(110deg,#1b5e35dd,#5d4037bb),url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=2000&q=85') center/cover;min-height:490px;display:flex;align-items:center;color:#fff}
+.hero-content{max-width:780px;padding:75px 0}
+.badge{display:inline-block;background:#ffffff20;border:1px solid #ffffff66;border-radius:30px;padding:7px 14px;margin-bottom:16px;font-size:.9rem}
+.hero h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.1;margin-bottom:18px;color:#fff}
+.hero h1 strong{color:var(--amarelo)}
+.hero p{font-size:1.1rem;max-width:680px;margin-bottom:25px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.feira-box{margin-top:30px;background:#ffffff18;border:1px solid #ffffff55;border-radius:15px;padding:16px;backdrop-filter:blur(6px);display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.feira-item strong{display:block;color:var(--amarelo)}
+section{padding:65px 0}
+.section-head{text-align:center;max-width:750px;margin:0 auto 32px}
+.section-head h2{color:var(--verde);font-size:2rem;margin-bottom:8px}
+.section-head p{color:var(--cinza)}
+.stats{margin-top:-35px;position:relative;z-index:2}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:#fff;border:1px solid var(--borda);border-radius:15px;padding:20px;text-align:center;box-shadow:0 8px 25px #0000000a}
+.stat b{display:block;color:var(--verde);font-size:1.65rem}
+.stat span{font-size:.85rem;color:var(--cinza)}
+.toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:18px}
+.search{flex:1;min-width:240px;position:relative}
+.search input{width:100%;padding:13px 16px 13px 43px;border:1px solid var(--borda);border-radius:12px;background:#fff;outline:none}
+.search span{position:absolute;left:15px;top:10px;font-size:1.2rem}
+.select{padding:12px;border:1px solid var(--borda);border-radius:12px;background:#fff}
+.chips{display:flex;gap:9px;overflow:auto;padding-bottom:8px;margin-bottom:25px}
+.chip{white-space:nowrap;padding:9px 15px;border:1px solid #c8d4c8;background:#fff;border-radius:25px;color:var(--terra2);font-weight:600}
+.chip.active,.chip:hover{background:var(--verde);border-color:var(--verde);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:1px solid var(--borda);border-radius:16px;overflow:hidden;box-shadow:0 6px 20px #0000000b;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px #00000014}
+.card-img{height:210px;width:100%;object-fit:cover;background:#ddd}
+.card-body{padding:18px}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:start}
+.card h3{color:var(--verde);font-size:1.18rem}
+.tag{display:inline-block;font-size:.72rem;background:var(--verde3);color:var(--verde);padding:4px 8px;border-radius:20px;font-weight:700}
+.producer{font-size:.82rem;color:var(--cinza);margin:5px 0 10px}
+.price{font-size:1.35rem;font-weight:800;color:var(--terra2);margin:10px 0}
+.card-actions{display:flex;gap:8px}
+.card-actions .btn{flex:1}
+.whatsapp{background:#25d366;color:#fff}
+.outline-green{border:1px solid var(--verde);color:var(--verde);background:#fff}
+.empty{text-align:center;padding:40px;background:#fff;border-radius:15px;border:1px dashed #bbb;display:none}
+.about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}
+.about img{width:100%;height:380px;object-fit:cover;border-radius:18px}
+.list{display:grid;gap:14px;margin-top:20px}
+.list div{display:flex;gap:12px;align-items:flex-start}
+.icon{width:38px;height:38px;display:grid;place-items:center;background:var(--verde3);border-radius:10px;flex:none}
+.producers{background:var(--fundo)}
+.producer-card{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;padding:20px}
+.producer-card img{width:120px;height:120px;object-fit:cover;border-radius:50%}
+.rating{color:#d49a00;font-weight:700}
+.feira{background:linear-gradient(135deg,var(--verde),#1b5e20);color:#fff}
+.feira .section-head h2,.feira .section-head p{color:#fff}
+.feira-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.info-box{background:#ffffff12;border:1px solid #ffffff38;border-radius:16px;padding:25px}
+.info-box h3{color:var(--amarelo);margin-bottom:10px}
+.map-wrap{background:#fff;padding:8px;border-radius:15px}
+.map-wrap iframe{width:100%;height:340px;border:0;border-radius:10px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:#fff;padding:24px;border-radius:15px;border:1px solid var(--borda)}
+.step-num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--verde);color:#fff;font-weight:800;margin-bottom:12px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.contact-card{background:#fff;border:1px solid var(--borda);border-radius:15px;padding:22px}
+footer{background:var(--terra2);color:#fff;padding:45px 0 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+footer h3{color:var(--amarelo);margin-bottom:12px}
+footer a{display:block;color:#eee;margin:5px 0}
+.copyright{border-top:1px solid #ffffff22;margin-top:30px;padding-top:18px;text-align:center;color:#ddd;font-size:.85rem}
+.cart-btn{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:var(--verde);color:#fff;box-shadow:0 8px 25px #0004;z-index:900;font-size:1.35rem}
+.cart-count{position:absolute;right:-2px;top:-3px;background:var(--amarelo);color:var(--terra2);width:21px;height:21px;border-radius:50%;font-size:.72rem;display:grid;place-items:center;font-weight:800}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:20px;z-index:2000}
+.modal.show{display:flex}
+.modal-box{width:min(520px,100%);background:#fff;border-radius:18px;padding:25px;max-height:90vh;overflow:auto}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.close{background:#eee;width:35px;height:35px;border-radius:50%}
+.cart-line{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--borda)}
+.cart-total{font-size:1.3rem;font-weight:800;text-align:right;margin:18px 0}
+.form{display:grid;gap:12px}
+.form input,.form textarea{width:100%;padding:12px;border:1px solid var(--borda);border-radius:9px}
+.form textarea{min-height:90px;resize:vertical}
+.notice{padding:12px;background:var(--verde3);border-radius:10px;color:var(--verde);font-size:.9rem}
+@media(max-width:900px){
+  nav{display:none}.menu{display:block}.header-inner{min-height:65px}
+  .hero{min-height:auto}.feira-box,.stats-grid,.grid,.steps,.contact-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.feira-grid,.footer-grid{grid-template-columns:1fr}
 }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-main); color: var(--text-main); line-height: 1.6; transition: var(--transition); }
-
-a { text-decoration: none; color: inherit; }
-button, input, select, textarea { font: inherit; }
-button { cursor: pointer; border: 0; background: none; }
-
-.container { width: min(1220px, 92%); margin: auto; }
-
-/* Header Profissional */
-header { position: sticky; top: 0; z-index: 1000; background: var(--surface); border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); background-opacity: 0.95; }
-.header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.5rem; color: var(--primary); }
-.logo span { color: var(--accent); background: var(--primary); padding: 2px 8px; border-radius: 8px; }
-
-nav { display: flex; align-items: center; gap: 24px; }
-nav a { font-weight: 600; font-size: 0.95krem; color: var(--text-muted); transition: var(--transition); }
-nav a:hover, nav a.active { color: var(--primary); }
-
-.header-actions { display: flex; align-items: center; gap: 12px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: var(--radius); font-weight: 700; transition: var(--transition); font-size: 0.95rem; }
-.btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(27, 94, 32, 0.2); }
-.btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
-.btn-accent { background: var(--accent); color: #1e293b; }
-.btn-accent:hover { background: var(--accent-hover); transform: translateY(-2px); }
-.btn-outline { border: 1px solid var(--border); color: var(--text-main); background: var(--surface); }
-.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-
-/* Hero Section com Padrão de Engenharia de Dados */
-.hero { padding: 90px 0 60px; background: linear-gradient(135deg, rgba(27,94,32,0.95), rgba(46,125,50,0.85)), url('https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=2000&q=85') center/cover; color: #fff; border-radius: 0 0 32px 32px; margin-bottom: 40px; box-shadow: var(--shadow-md); }
-.hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
-.hero badge { display: inline-flex; background: rgba(255,255,255,0.15); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 6px 14px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
-.hero h1 { font-size: clamp(2.5rem, 4vw, 3.8rem); line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
-.hero h1 span { color: var(--accent); }
-.hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; max-width: 600px; }
-
-/* Dashboard Cards de Métricas em Tempo Real */
-.metrics-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--radius); padding: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.metric-item b { display: block; font-size: 1.8rem; color: var(--accent); }
-.metric-item span { font-size: 0.85rem; opacity: 0.8; }
-
-/* Seções e Ferramentas de Busca Avançada */
-section { padding: 50px 0; }
-.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 35px; flex-wrap: wrap; gap: 20px; }
-.section-header h2 { font-size: 2rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
-.section-header p { color: var(--text-muted); font-size: 1rem; }
-
-.toolbar { background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow-sm); display: flex; gap: 15px; align-items: center; flex-wrap: wrap; margin-bottom: 30px; }
-.search-box { flex: 1; min-width: 280px; position: relative; }
-.search-box input { width: 100%; padding: 12px 16px 12px 44px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-main); color: var(--text-main); outline: none; transition: var(--transition); }
-.search-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(27,94,32,0.1); }
-.search-box span { position: absolute; left: 16px; top: 13px; color: var(--text-muted); }
-
-.filter-chips { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
-.chip { padding: 10px 18px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: var(--transition); white-space: nowrap; }
-.chip.active, .chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
-
-/* Grid de Produtos Dinâmicos */
-.grid-products { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column; }
-.card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary); }
-.card-img-wrapper { height: 200px; position: relative; overflow: hidden; background: #e2e8f0; }
-.card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
-.card:hover .card-img-wrapper img { transform: scale(1.05); }
-.card-badge { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
-
-.card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
-.card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
-.card-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-.card-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.card-footer { display: flex; align-items: center; justify-content:between; border-top: 1px solid var(--border); padding-top: 14px; margin-top: auto; }
-.price { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
-.price small { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
-
-/* Painel Administrativo / Painel do Produtor (Recurso Avançado) */
-.admin-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow-md); margin-top: 40px; }
-.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
-.form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-main); color: var(--text-main); outline: none; transition: var(--transition); }
-.form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(27,94,32,0.1); }
-
-/* Carrinho Flutuante e Modais Estilizados */
-.cart-float { position: fixed; right: 30px; bottom: 30px; background: var(--primary); color: #fff; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items:center; font-size: 1.5rem; box-shadow: 0 10px 25px rgba(27,94,32,0.4); z-index: 999; transition: var(--transition); }
-.cart-float:hover { transform: scale(1.1); background: var(--primary-light); }
-.cart-counter { position: absolute; top: -4px; right: -4px; background: var(--accent); color: #1e293b; width: 24px; height: 24px; border-radius: 50%; font-size: 0.75rem; font-weight: 800; display: grid; place-items: center; border: 2px solid var(--surface); }
-
-.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
-.modal-backdrop.show { display: flex; }
-.modal-content { background: var(--surface); border-radius: var(--radius); width: min(540px, 100%); padding: 30px; box-shadow: var(--shadow-md); max-height: 90vh; overflow-y: auto; position: relative; }
-.modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.2rem; background: var(--bg-main); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: var(--text-main); }
-
-footer { background: #0f172a; color: #94a3b8; padding: 60px 0 30px; margin-top: 80px; border-top: 1px solid var(--border); }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-grid h4 { color: #fff; margin-bottom: 16px; font-size: 1.1rem; }
-.footer-grid ul { list-style: none; display: grid; gap: 10px; }
-.footer-grid a:hover { color: var(--accent); }
-
-@media(max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  nav { display: none; }
-  .footer-grid { grid-template-columns: 1fr; }
+@media(max-width:600px){
+  .container{width:min(94%,1180px)}section{padding:48px 0}
+  .hero-content{padding:55px 0}.feira-box,.stats-grid,.grid,.steps,.contact-grid{grid-template-columns:1fr}
+  .producer-card{grid-template-columns:1fr;text-align:center}.producer-card img{margin:auto}
+  .hero-actions .btn{width:100%}.card-actions{flex-direction:column}
+  .toolbar{align-items:stretch}.select{width:100%}
 }
 </style>
 </head>
@@ -143,314 +133,246 @@ footer { background: #0f172a; color: #94a3b8; padding: 60px 0 30px; margin-top: 
 
 <header>
   <div class="container header-inner">
-    <a href="#" class="logo">🌿 Agro<span>Feira</span></a>
+    <a class="logo" href="#inicio">🌿 <span>AgroFeira</span></a>
     <nav>
-      <a href="#catalogo" class="active">Catálogo Inteligente</a>
-      <a href="#produtores">Produtores Locais</a>
-      <a href="#painel">Painel do Agricultor</a>
-      <a href="#sobre">Ecossistema</a>
+      <a href="#inicio">Início</a><a href="#catalogo">Produtos</a><a href="#produtores">Produtores</a>
+      <a href="#feira">Feira</a><a href="#como-funciona">Como funciona</a><a href="#contato">Contato</a>
+      <a class="btn btn-primary" href="#produtor">Sou produtor</a>
     </nav>
-    <div class="header-actions">
-      <button class="btn btn-outline" onclick="toggleTheme()" title="Alternar Modo Visual">🌓 Tema</button>
-      <a href="#painel" class="btn btn-primary">Cadastrar Produto</a>
-    </div>
+    <button class="menu" onclick="alert('No celular, use os botões e links da página para navegar.')">☰</button>
   </div>
 </header>
 
 <main>
-  <!-- Hero Section Avançada -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="badge">🚀 Edição Digital Avançada • Paragominas/PA</span>
-        <h1>Conectando o Campo <span>Direto à sua Mesa</span> com Eficiência.</h1>
-        <p>Plataforma descentralizada de negociação agrícola direta, garantindo rastreabilidade, apoio à agricultura familiar e fomento econômico regional sustentável.</p>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="#catalogo" class="btn btn-accent">🛒 Explorar Catálogo</a>
-          <a href="#painel" class="btn btn-outline" style="color: #fff; border-color: rgba(255,255,255,0.4);">➕ Anunciar Safra</a>
-        </div>
-      </div>
-      <div>
-        <div class="metrics-card">
-          <div class="metric-item"><b id="stat-producers">54</b><span>Produtores Ativos</span></div>
-          <div class="metric-item"><b id="stat-products">18+</b><span>Itens Cadastrados</span></div>
-          <div class="metric-item"><b>100%</b><span>Comércio Justo</span></div>
-          <div class="metric-item"><b>Zero</b><span>Taxa de Intermediação</span></div>
-        </div>
-      </div>
+<section class="hero" id="inicio">
+  <div class="container hero-content">
+    <div class="badge">🌱 Agricultura familiar • Produtos locais • Paragominas/PA</div>
+    <h1>Do produtor <strong>para a sua mesa.</strong></h1>
+    <p>Encontre alimentos frescos, produtos artesanais e produtores da região em um único lugar. Conheça, escolha e entre em contato diretamente com quem produz.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#catalogo">🛒 Ver produtos</a>
+      <a class="btn btn-outline" href="#feira">📅 Ver próxima feira</a>
     </div>
-  </section>
-
-  <!-- Seção de Catálogo e Busca Dinâmica -->
-  <section id="catalogo" class="container">
-    <div class="section-header">
-      <div>
-        <h2>Catálogo de Produtos Frescos</h2>
-        <p>Filtre por categoria ou pesquise diretamente pelo item desejado.</p>
-      </div>
+    <div class="feira-box">
+      <div class="feira-item"><strong>📅 Próxima feira</strong>Sábado • 28/09 • 06h00</div>
+      <div class="feira-item"><strong>📍 Local</strong>Praça Matriz • Centro</div>
+      <div class="feira-item"><strong>🤝 Participação</strong>Produtores locais</div>
     </div>
+  </div>
+</section>
 
+<section class="stats">
+  <div class="container stats-grid">
+    <div class="stat"><b>+50</b><span>produtores cadastrados</span></div>
+    <div class="stat"><b>+120</b><span>produtos disponíveis</span></div>
+    <div class="stat"><b>100%</b><span>foco local</span></div>
+    <div class="stat"><b>📲</b><span>contato direto</span></div>
+  </div>
+</section>
+
+<section id="catalogo">
+  <div class="container">
+    <div class="section-head"><h2>🧺 Catálogo de Produtos</h2><p>Pesquise, filtre por categoria e monte sua lista de interesse.</p></div>
     <div class="toolbar">
-      <div class="search-box">
-        <span>🔍</span>
-        <input type="text" id="searchInput" placeholder="Pesquisar por hortaliça, fruta, mel, produtor..." oninput="filterProducts()">
-      </div>
-      <div class="filter-chips" id="categoryChips">
-        <button class="chip active" onclick="setCategory('Todos', this)">Todos</button>
-        <button class="chip" onclick="setCategory('Hortaliças', this)">🥬 Hortaliças</button>
-        <button class="chip" onclick="setCategory('Frutas', this)">🍌 Frutas</button>
-        <button class="chip" onclick="setCategory('Raízes', this)">🥔 Raízes</button>
-        <button class="chip" onclick="setCategory('Mel & Derivados', this)">🍯 Mel & Derivados</button>
-        <button class="chip" onclick="setCategory('Laticínios', this)">🧀 Laticínios</button>
-        <button class="chip" onclick="setCategory('Artesanato', this)">🧺 Artesanato</button>
-      </div>
+      <div class="search"><span>🔎</span><input id="search" type="search" placeholder="Buscar produto, produtor ou categoria..." oninput="renderProducts()"></div>
+      <select id="sort" class="select" onchange="renderProducts()">
+        <option value="default">Ordenar: padrão</option><option value="low">Menor preço</option><option value="high">Maior preço</option><option value="name">Nome A–Z</option>
+      </select>
     </div>
+    <div class="chips" id="chips">
+      <button class="chip active" data-cat="Todos">Todos</button>
+      <button class="chip" data-cat="Hortaliças">🥬 Hortaliças</button>
+      <button class="chip" data-cat="Frutas">🍌 Frutas</button>
+      <button class="chip" data-cat="Raízes">🥔 Raízes</button>
+      <button class="chip" data-cat="Mel">🍯 Mel</button>
+      <button class="chip" data-cat="Laticínios">🧀 Laticínios</button>
+      <button class="chip" data-cat="Artesanato">🧺 Artesanato</button>
+    </div>
+    <div id="productGrid" class="grid"></div>
+    <div id="empty" class="empty">🔎 Nenhum produto encontrado. Tente outro termo ou categoria.</div>
+  </div>
+</section>
 
-    <div id="productGrid" class="grid-products">
-      <!-- Inserido dinamicamente via Script -->
-    </div>
-  </section>
-
-  <!-- Painel Interativo de Gestão / Cadastro de Produto para o Produtor (Simulando o requisito avançado) -->
-  <section id="painel" class="container">
-    <div class="admin-panel">
-      <div class="section-header" style="margin-bottom: 20px;">
-        <div>
-          <h2>🌾 Painel de Cadastro e Gestão de Safra</h2>
-          <p>Adicione novos produtos diretamente ao catálogo interativo da AgroFeira.</p>
-        </div>
+<section class="about">
+  <div class="container about-grid">
+    <img src="https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=1000&q=85" alt="Plantação e agricultura familiar">
+    <div>
+      <div class="section-head" style="text-align:left;margin:0"><h2>🌱 Por que a AgroFeira?</h2><p>Uma vitrine digital para aproximar a agricultura familiar da comunidade.</p></div>
+      <div class="list">
+        <div><span class="icon">🥕</span><div><b>Produtos frescos</b><p>Valorize alimentos produzidos e comercializados localmente.</p></div></div>
+        <div><span class="icon">🤝</span><div><b>Contato direto</b><p>O cliente pode falar diretamente com o produtor para consultar disponibilidade.</p></div></div>
+        <div><span class="icon">📍</span><div><b>Comércio local</b><p>Facilite a descoberta de produtores, barracas e pontos da feira.</p></div></div>
+        <div><span class="icon">♻️</span><div><b>Produção responsável</b><p>Espaço para divulgar práticas sustentáveis e produtos artesanais.</p></div></div>
       </div>
-      <form id="productForm" onsubmit="handleProductSubmit(event)">
-        <div class="form-grid">
-          <input type="text" id="prodName" class="form-control" placeholder="Nome do Produto (Ex: Macaxeira Fresca)" required>
-          <select id="prodCat" class="form-control" required>
-            <option value="" disabled selected>Selecione a Categoria</option>
-            <option value="Hortaliças">Hortaliças</option>
-            <option value="Frutas">Frutas</option>
-            <option value="Raízes">Raízes</option>
-            <option value="Mel & Derivados">Mel & Derivados</option>
-            <option value="Laticínios">Laticínios</option>
-            <option value="Artesanato">Artesanato</option>
-          </select>
-          <input type="text" id="prodFarmer" class="form-control" placeholder="Nome do Produtor / Sítio" required>
-          <input type="text" id="prodPlace" class="form-control" placeholder="Localização / Barraca (Ex: Barraca 14)" required>
-          <input type="number" step="0.01" id="prodPrice" class="form-control" placeholder="Preço em R$ (Ex: 6.50)" required>
-          <input type="text" id="prodUnit" class="form-control" placeholder="Unidade (Ex: kg, maço, unidade)" required>
-        </div>
-        <div style="margin-bottom: 16px;">
-          <input type="url" id="prodImg" class="form-control" placeholder="URL de Imagem Ilustrativa (Opcional - deixe vazio para imagem padrão)">
-        </div>
-        <textarea id="prodDesc" class="form-control" placeholder="Breve descrição da safra ou qualidade do produto..." style="margin-bottom: 16px; min-height: 80px;" required></textarea>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Publicar Produto no Catálogo Online</button>
-      </form>
     </div>
-  </section>
+  </div>
+</section>
+
+<section id="produtores" class="producers">
+  <div class="container">
+    <div class="section-head"><h2>👨‍🌾 Nossos Produtores</h2><p>Conheça quem está por trás dos produtos.</p></div>
+    <div class="grid">
+      <article class="card producer-card">
+        <img src="https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&w=400&q=85" alt="Produtor rural">
+        <div><h3>João da Silva</h3><div class="rating">⭐ 4,9 • 120 avaliações</div><p class="producer">📍 Região do Uraim • Barraca 12</p><p>Especialidade: hortaliças orgânicas e raízes.</p><br><button class="btn outline-green" onclick="showProducer()">Ver perfil completo</button></div>
+      </article>
+      <article class="card producer-card">
+        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=400&q=85" alt="Produtor rural">
+        <div><h3>Apiário do Sol</h3><div class="rating">⭐ 4,8 • 87 avaliações</div><p class="producer">📍 Comunidade rural • Barraca 05</p><p>Especialidade: mel, derivados e produtos da apicultura.</p><br><button class="btn outline-green" onclick="showProducer()">Ver perfil completo</button></div>
+      </article>
+      <article class="card producer-card">
+        <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?auto=format&fit=crop&w=400&q=85" alt="Artesanato">
+        <div><h3>Artes da Terra</h3><div class="rating">⭐ 4,9 • 64 avaliações</div><p class="producer">📍 Centro • Barraca 21</p><p>Especialidade: artesanato e produtos feitos à mão.</p><br><button class="btn outline-green" onclick="showProducer()">Ver perfil completo</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="feira" class="feira">
+  <div class="container">
+    <div class="section-head"><h2>📅 Próxima Feira</h2><p>Confira as informações para visitar a feira presencialmente.</p></div>
+    <div class="feira-grid">
+      <div class="info-box">
+        <h3>Sábado, 28 de Setembro</h3>
+        <p>🕕 A partir das 06h00</p><p>📍 Praça Matriz, Centro — Paragominas/PA</p><p>🧺 Hortaliças, frutas, raízes, mel, laticínios, artesanato e alimentação.</p>
+        <br><a class="btn btn-primary" href="#localizacao">🗺️ Ver localização</a>
+      </div>
+      <div class="map-wrap" id="localizacao">
+        <iframe loading="lazy" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31885.64251478174!2d-47.38244199999999!3d-2.998493199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a09c313da0fa8b%3A0xc3b832b0f443b092!2sParagominas%2C%20PA!5e0!3m2!1spt-BR!2sbr!4v1680000000000!5z"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="container">
+    <div class="section-head"><h2>📲 Como funciona?</h2><p>Uma experiência simples para compradores e produtores.</p></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3>Encontre</h3><p>Pesquise produtos, categorias e produtores no catálogo.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Escolha</h3><p>Confira preço, unidade, produtor e localização da barraca.</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Entre em contato</h3><p>Use o WhatsApp para consultar disponibilidade e combinar a compra.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="produtor" class="about">
+  <div class="container">
+    <div class="section-head"><h2>🌾 Quer vender na AgroFeira?</h2><p>Cadastre seus dados para participar da plataforma.</p></div>
+    <form class="form" onsubmit="sendProducer(event)" style="max-width:720px;margin:auto">
+      <input id="nomeProdutor" required placeholder="Nome do produtor ou empreendimento">
+      <input id="telefoneProdutor" required placeholder="WhatsApp">
+      <input id="produtosProdutor" required placeholder="Quais produtos você vende?">
+      <input id="localProdutor" placeholder="Comunidade / localização">
+      <textarea id="obsProdutor" placeholder="Conte um pouco sobre sua produção"></textarea>
+      <button class="btn btn-primary" type="submit">📲 Enviar cadastro pelo WhatsApp</button>
+      <div class="notice">O cadastro é uma solicitação. A publicação dos produtos pode depender de confirmação pela organização da feira.</div>
+    </form>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="container">
+    <div class="section-head"><h2>📞 Contato e informações</h2><p>Canal para dúvidas, sugestões e participação.</p></div>
+    <div class="contact-grid">
+      <div class="contact-card"><h3>📱 WhatsApp</h3><p>Fale conosco pelo celular para informações sobre a feira.</p><br><a class="btn whatsapp" href="https://wa.me/5591999999999" target="_blank">Abrir WhatsApp</a></div>
+      <div class="contact-card"><h3>📍 Localização</h3><p>Praça Matriz, Centro<br>Paragominas — Pará</p><br><a class="btn outline-green" href="#feira">Ver mapa</a></div>
+      <div class="contact-card"><h3>📝 Sugestões</h3><p>Tem uma ideia para melhorar a feira ou a plataforma?</p><br><button class="btn outline-green" onclick="openModal('feedback')">Enviar sugestão</button></div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
   <div class="container footer-grid">
-    <div>
-      <h3 style="color:#fff; margin-bottom:12px;">🌿 AgroFeira Paragominas</h3>
-      <p>Desenvolvido para aproximar a produção familiar dos centros urbanos com tecnologias web avançadas e arquitetura orientada a dados.</p>
-    </div>
-    <div>
-      <h4>Navegação</h4>
-      <ul>
-        <li><a href="#catalogo">Catálogo de Produtos</a></li>
-        <li><a href="#painel">Painel do Produtor</a></li>
-        <li><a href="#inicio">Início da Página</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Suporte & Parceria</h4>
-      <ul>
-        <li><a href="https://wa.me/5591980622997" target="_blank">Contato via WhatsApp</a></li>
-        <li><a href="#">Termos e Privacidade</a></li>
-      </ul>
-    </div>
+    <div><h2>🌿 AgroFeira</h2><p>Conectando o campo à cidade e valorizando a agricultura familiar de Paragominas.</p></div>
+    <div><h3>Navegação</h3><a href="#inicio">Início</a><a href="#catalogo">Produtos</a><a href="#produtores">Produtores</a><a href="#feira">Feira</a></div>
+    <div><h3>Para produtores</h3><a href="#produtor">Cadastrar-se</a><a href="#como-funciona">Como funciona</a></div>
+    <div><h3>Informações</h3><a href="#contato">Contato</a><a href="#">Privacidade</a><a href="#">Termos de uso</a></div>
   </div>
-  <div class="container" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.85rem;">
-    © 2026 AgroFeira Paragominas • Todos os direitos reservados.
-  </div>
+  <div class="container copyright">© 2026 AgroFeira Paragominas • Projeto demonstrativo</div>
 </footer>
 
-<!-- Botão Flutuante do Carrinho / Lista -->
-<button class="cart-float" onclick="openCartModal()" aria-label="Abrir Lista de Interesses">
-  🛒
-  <span id="cartCount" class="cart-counter">0</span>
-</button>
+<button class="cart-btn" onclick="openCart()" aria-label="Abrir lista de pedidos">🛒<span id="cartCount" class="cart-count">0</span></button>
 
-<!-- Modal Dinâmico -->
-<div id="appModal" class="modal-backdrop" onclick="if(event.target === this) closeModal()">
-  <div class="modal-content">
-    <div class="modal-close" onclick="closeModal()">✕</div>
-    <h2 id="modalTitle" style="margin-bottom: 15px; font-size: 1.4rem;">Sua Lista de Pedidos</h2>
-    <div id="modalBody"></div>
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="modal-head"><h2 id="modalTitle">Lista de pedidos</h2><button class="close" onclick="closeModal()">✕</button></div>
+    <div id="modalContent"></div>
   </div>
 </div>
 
 <script>
-// Estado Global Reativo da Aplicação (Simulando arquitetura avançada)
-let state = {
-  theme: 'light',
-  currentCategory: 'Todos',
-  searchQuery: '',
-  cart: [],
-  products: [
-    {id: 1, name: "Mandioca Amarela Premium", cat: "Raízes", farmer: "João da Silva", place: "Barraca 12", price: 5.00, unit: "kg", img: "https://images.unsplash.com/photo-1596485804153-6258622c7a72?auto=format&fit=crop&w=700&q=85", desc: "Macia e fresca, colhida no amanhecer."},
-    {id: 2, name: "Mel Silvestre do Uraim", cat: "Mel & Derivados", farmer: "Apiário do Sol", place: "Barraca 05", price: 25.00, unit: "unidade", img: "https://images.unsplash.com/photo-1587049352847-81a56d773c1c?auto=format&fit=crop&w=700&q=85", desc: "Mel puro, 100% natural sem aditivos."},
-    {id: 3, name: "Alface Crespa Hidropônica", cat: "Hortaliças", farmer: "Horta Jaderlândia", place: "Barraca 10", price: 3.50, unit: "maço", img: "https://images.unsplash.com/photo-1622205313162-be1d5712a43d?auto=format&fit=crop&w=700&q=85", desc: "Folhas crocantes cultivadas localmente."},
-    {id: 4, name: "Banana Prata Selecionada", cat: "Frutas", farmer: "Sítio Boa Esperança", place: "Barraca 08", price: 6.00, unit: "kg", img: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=700&q=85", desc: "Frutas no ponto ideal de maturação."},
-    {id: 5, name: "Queijo Colonial Artesanal", cat: "Laticínios", farmer: "Sabor da Roça", place: "Barraca 16", price: 32.00, unit: "peça", img: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=700&q=85", desc: "Produção familiar artesanal de alta qualidade."},
-    {id: 6, name: "Polpa Congelada de Cupuaçu", cat: "Frutas", farmer: "Sabores do Pará", place: "Barraca 18", price: 12.00, unit: "500g", img: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=700&q=85", desc: "Polpa pura de cupuaçu regional."}
-  ]
-};
+const products=[
+ {id:1,name:"Mandioca Amarela",cat:"Raízes",producer:"João da Silva",place:"Barraca 12",price:5,unit:"kg",img:"https://images.unsplash.com/photo-1596485804153-6258622c7a72?auto=format&fit=crop&w=700&q=85",desc:"Macia e fresca, colhida de madrugada."},
+ {id:2,name:"Mel Silvestre",cat:"Mel",producer:"Apiário do Sol",place:"Barraca 05",price:25,unit:"unidade",img:"https://images.unsplash.com/photo-1587049352847-81a56d773c1c?auto=format&fit=crop&w=700&q=85",desc:"Mel puro e sem conservantes."},
+ {id:3,name:"Alface Crespa",cat:"Hortaliças",producer:"João da Silva",place:"Barraca 12",price:3.5,unit:"maço",img:"https://images.unsplash.com/photo-1622205313162-be1d5712a43d?auto=format&fit=crop&w=700&q=85",desc:"Folhas frescas para saladas."},
+ {id:4,name:"Banana Prata",cat:"Frutas",producer:"Sítio Boa Esperança",place:"Barraca 08",price:6,unit:"kg",img:"https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=700&q=85",desc:"Banana selecionada e madura no ponto."},
+ {id:5,name:"Queijo Artesanal",cat:"Laticínios",producer:"Sabor da Roça",place:"Barraca 16",price:32,unit:"peça",img:"https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=700&q=85",desc:"Produção artesanal em pequena escala."},
+ {id:6,name:"Cesta de Hortaliças",cat:"Hortaliças",producer:"Horta Jaderlândia",place:"Barraca 10",price:30,unit:"cesta",img:"https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=700&q=85",desc:"Seleção variada de hortaliças da estação."},
+ {id:7,name:"Artesanato em Fibra",cat:"Artesanato",producer:"Artes da Terra",place:"Barraca 21",price:45,unit:"unidade",img:"https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&w=700&q=85",desc:"Peça artesanal produzida à mão."},
+ {id:8,name:"Polpa de Cupuaçu",cat:"Frutas",producer:"Sabores do Pará",place:"Barraca 18",price:12,unit:"500 g",img:"https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=700&q=85",desc:"Polpa congelada para sucos e receitas."},
+ {id:9,name:"Tomate",cat:"Hortaliças",producer:"Horta Verde",place:"Barraca 03",price:8,unit:"kg",img:"https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=700&q=85",desc:"Tomates frescos selecionados."}
+];
+let category="Todos",cart=[];
 
-function renderApp() {
-  renderProducts();
-  document.getElementById('stat-products').textContent = state.products.length + '+';
-  document.getElementById('cartCount').textContent = state.cart.length;
+function renderProducts(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ let list=products.filter(p=>(category==="Todos"||p.cat===category)&&`${p.name} ${p.cat} ${p.producer}`.toLowerCase().includes(q));
+ const sort=document.getElementById("sort").value;
+ if(sort==="low")list.sort((a,b)=>a.price-b.price);
+ if(sort==="high")list.sort((a,b)=>b.price-a.price);
+ if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+ document.getElementById("empty").style.display=list.length?"none":"block";
+ document.getElementById("productGrid").innerHTML=list.map(p=>`
+ <article class="card">
+  <img class="card-img" src="${p.img}" alt="${p.name}">
+  <div class="card-body">
+   <div class="card-top"><h3>${p.name}</h3><span class="tag">${p.cat}</span></div>
+   <div class="producer">👨‍🌾 ${p.producer} • ${p.place}</div>
+   <p>${p.desc}</p><div class="price">R$ ${p.price.toFixed(2).replace(".",",")} <small>/ ${p.unit}</small></div>
+   <div class="card-actions">
+    <button class="btn outline-green" onclick="addCart(${p.id})">➕ Lista</button>
+    <a class="btn whatsapp" target="_blank" href="https://wa.me/5591980622997?text=${encodeURIComponent("Olá! Tenho interesse em "+p.name+" ("+p.producer+"). Ainda há disponibilidade?")}">WhatsApp</a>
+   </div>
+  </div>
+ </article>`).join("");
 }
-
-function renderProducts() {
-  const grid = document.getElementById('productGrid');
-  const query = state.searchQuery.toLowerCase();
-  
-  const filtered = state.products.filter(p => {
-    const matchesCategory = state.currentCategory === 'Todos' || p.cat === state.currentCategory;
-    const matchesSearch = `${p.name} ${p.farmer} ${p.cat}`.toLowerCase().includes(query);
-    return matchesCategory && matchesSearch;
-  });
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 40px; background:var(--surface); border-radius:var(--radius); border: 1px dashed var(--border);"><h3>Nenhum produto encontrado</h3><p style="color:var(--text-muted)">Tente ajustar sua busca ou categoria.</p></div>`;
-    return;
-  }
-
-  grid.innerHTML = filtered.map(p => `
-    <article class="card">
-      <div class="card-img-wrapper">
-        <span class="card-badge">${p.cat}</span>
-        <img src="${p.img || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=700&q=85'}" alt="${p.name}">
-      </div>
-      <div class="card-body">
-        <div>
-          <h3 class="card-title">${p.name}</h3>
-          <div class="card-meta"><span>👨‍🌾 ${p.farmer}</span> • <span>📍 ${p.place}</span></div>
-          <p class="card-desc">${p.desc}</p>
-        </div>
-        <div class="card-footer">
-          <div class="price">R$ ${p.price.toFixed(2).replace('.', ',')} <small>/ ${p.unit}</small></div>
-          <button class="btn btn-primary" onclick="addToCart(${p.id})" style="padding: 8px 14px; font-size: 0.85rem;">➕ Adicionar</button>
-        </div>
-      </div>
-    </article>
-  `).join('');
+document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));b.classList.add("active");category=b.dataset.cat;renderProducts();
+});
+function addCart(id){const p=products.find(x=>x.id===id);cart.push(p);document.getElementById("cartCount").textContent=cart.length;}
+function openCart(){
+ document.getElementById("modalTitle").textContent="🛒 Minha lista de pedidos";
+ const c=document.getElementById("modalContent");
+ if(!cart.length){c.innerHTML="<p>Sua lista está vazia.</p><br><a class='btn btn-primary' href='#catalogo' onclick='closeModal()'>Ver produtos</a>";}
+ else{
+  c.innerHTML=cart.map((p,i)=>`<div class="cart-line"><span><b>${p.name}</b><br><small>${p.producer} • R$ ${p.price.toFixed(2).replace(".",",")}/${p.unit}</small></span><button onclick="removeCart(${i})">🗑️</button></div>`).join("")+
+  `<div class="cart-total">Itens: ${cart.length}</div><button class="btn whatsapp" style="width:100%" onclick="sendOrder()">📲 Enviar lista pelo WhatsApp</button>`;
+ }
+ document.getElementById("modal").classList.add("show");
 }
-
-function setCategory(cat, element) {
-  state.currentCategory = cat;
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  element.classList.add('active');
-  renderProducts();
+function removeCart(i){cart.splice(i,1);document.getElementById("cartCount").textContent=cart.length;openCart();}
+function sendOrder(){
+ const text="Olá! Gostaria de consultar a disponibilidade destes produtos:%0A"+cart.map(p=>"- "+p.name+" ("+p.producer+")").join("%0A");
+ window.open("https://wa.me/5591980622997?text="+text,"_blank");
 }
-
-function filterProducts() {
-  state.searchQuery = document.getElementById('searchInput').value;
-  renderProducts();
+function openModal(type){
+ const title=document.getElementById("modalTitle"),content=document.getElementById("modalContent");
+ if(type==="feedback"){
+  title.textContent="💬 Enviar sugestão";
+  content.innerHTML=`<form class="form" onsubmit="sendFeedback(event)"><input id="fbNome" required placeholder="Seu nome"><input id="fbContato" placeholder="WhatsApp ou e-mail"><textarea id="fbTexto" required placeholder="Escreva sua sugestão"></textarea><button class="btn btn-primary">Enviar pelo WhatsApp</button></form>`;
+ }
+ document.getElementById("modal").classList.add("show");
 }
-
-function addToCart(id) {
-  const product = state.products.find(p => p.id === id);
-  if (product) {
-    state.cart.push(product);
-    renderApp();
-    // Feedback visual rápido
-    alert(`"${product.name}" adicionado à sua lista de pedidos!`);
-  }
+function sendFeedback(e){e.preventDefault();const text=`Olá! Sou ${fbNome.value}. Minha sugestão para a AgroFeira é: ${fbTexto.value}`;window.open("https://wa.me/5591980622997?text="+encodeURIComponent(text),"_blank");closeModal();}
+function sendProducer(e){
+ e.preventDefault();
+ const text=`Olá! Quero solicitar cadastro na AgroFeira.%0ANome: ${nomeProdutor.value}%0AWhatsApp: ${telefoneProdutor.value}%0AProdutos: ${produtosProdutor.value}%0ALocal: ${localProdutor.value}%0AObservações: ${obsProdutor.value}`;
+ window.open("https://wa.me/5591980622997?text="+text,"_blank");
 }
-
-function openCartModal() {
-  const modal = document.getElementById('appModal');
-  const title = document.getElementById('modalTitle');
-  const body = document.getElementById('modalBody');
-
-  title.textContent = "🛒 Lista de Pedidos Consolidados";
-  
-  if (state.cart.length === 0) {
-    body.innerHTML = `<p style="text-align:center; padding: 20px; color:var(--text-muted)">Sua lista está vazia no momento.</p>`;
-  } else {
-    let total = state.cart.reduce((sum, item) => sum + item.price, 0);
-    body.innerHTML = `
-      <div style="display:grid; gap: 12px; margin-bottom: 20px; max-height: 250px; overflow-y:auto;">
-        ${state.cart.map((item, idx) => `
-          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-main); padding: 10px 14px; border-radius: 8px;">
-            <div>
-              <strong>${item.name}</strong><br>
-              <small style="color:var(--text-muted)">${item.farmer} • R$ ${item.price.toFixed(2).replace('.', ',')}</small>
-            </div>
-            <button onclick="removeFromCart(${idx})" style="color:#ef4444; font-weight:bold;">Remover</button>
-          </div>
-        `).join('')}
-      </div>
-      <div style="font-size: 1.2rem; font-weight: 800; text-align: right; margin-bottom: 20px;">
-        Total Estimado: R$ ${total.toFixed(2).replace('.', ',')}
-      </div>
-      <button class="btn btn-primary" style="width:100%; background:#25d366;" onclick="sendWhatsAppOrder()">📲 Enviar Pedido via WhatsApp</button>
-    `;
-  }
-  modal.classList.add('show');
-}
-
-function removeFromCart(index) {
-  state.cart.splice(index, 1);
-  renderApp();
-  openCartModal();
-}
-
-function sendWhatsAppOrder() {
-  const listText = state.cart.map(i => `- ${i.name} (${i.farmer}) - R$ ${i.price.toFixed(2)}`).join('%0A');
-  const url = `https://wa.me/5591980622997?text=${encodeURIComponent("Olá! Gostaria de encomendar os seguintes produtos da AgroFeira:%0A" + listText)}`;
-  window.open(url, '_blank');
-}
-
-function handleProductSubmit(e) {
-  e.preventDefault();
-  const newProduct = {
-    id: Date.now(),
-    name: document.getElementById('prodName').value,
-    cat: document.getElementById('prodCat').value,
-    farmer: document.getElementById('prodFarmer').value,
-    place: document.getElementById('prodPlace').value,
-    price: parseFloat(document.getElementById('prodPrice').value),
-    unit: document.getElementById('prodUnit').value,
-    img: document.getElementById('prodImg').value,
-    desc: document.getElementById('prodDesc').value
-  };
-
-  state.products.unshift(newProduct);
-  renderApp();
-  document.getElementById('productForm').reset();
-  alert('Produto cadastrado com sucesso e já exibido no catálogo online!');
-  window.location.hash = '#catalogo';
-}
-
-function toggleTheme() {
-  if (state.theme === 'light') {
-    state.theme = 'dark';
-    document.body.setAttribute('data-theme', 'dark');
-  } else {
-    state.theme = 'light';
-    document.body.removeAttribute('data-theme');
-  }
-}
-
-function closeModal() {
-  document.getElementById('appModal').classList.remove('show');
-}
-
-// Inicialização da aplicação
-renderApp();
+function showProducer(){openModal("feedback");document.getElementById("modalTitle").textContent="👨‍🌾 Perfil do produtor";document.getElementById("modalContent").innerHTML="<p><b>Produtores da AgroFeira</b></p><p>Este espaço pode receber história, localização, produtos, horários, avaliações, fotos e formas de contato de cada produtor.</p><br><div class='notice'>Área preparada para integração futura com banco de dados e painel administrativo.</div>";}
+function closeModal(){document.getElementById("modal").classList.remove("show");}
+renderProducts();
 </script>
 </body>
 </html>
